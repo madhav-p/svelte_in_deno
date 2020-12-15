@@ -1,11 +1,4 @@
 <script>
 </script>
 
-<style>
-  span {
-    color: white;
-    background-color: rebeccapurple;
-  }
-</style>
-
-<h1>This is <span> Home</span> page</h1>
+<h1>This is  Home page</h1>

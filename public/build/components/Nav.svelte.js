@@ -2,6 +2,7 @@
 import {
 	SvelteComponent,
 	append,
+	attr,
 	check_outros,
 	create_component,
 	destroy_component,
@@ -21,6 +22,13 @@ import {
 } from "https://cdn.skypack.dev/svelte/internal";
 
 import Link from "./Link.svelte.js";
+
+function add_css() {
+	var style = element("style");
+	style.id = "svelte-mgpfo2-style";
+	style.textContent = "ul.svelte-mgpfo2{width:100%;display:flex;align-items:center;justify-content:space-around;background-color:orangered;padding:0.5em}li.svelte-mgpfo2{padding:0.5em;color:whitesmoke;list-style:none}li.svelte-mgpfo2:hover{background-color:rgb(253, 110, 57)}";
+	append(document.head, style);
+}
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
@@ -67,6 +75,7 @@ function create_each_block(ctx) {
 			li = element("li");
 			create_component(link.$$.fragment);
 			t = space();
+			attr(li, "class", "svelte-mgpfo2");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -120,6 +129,8 @@ function create_fragment(ctx) {
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
+
+			attr(ul, "class", "svelte-mgpfo2");
 		},
 		m(target, anchor) {
 			insert(target, ul, anchor);
@@ -196,6 +207,7 @@ function instance($$self) {
 class Nav extends SvelteComponent {
 	constructor(options) {
 		super();
+		if (!document.getElementById("svelte-mgpfo2-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal, {});
 	}
 }
